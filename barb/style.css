@@ -1,0 +1,234 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+
+body {
+    background: #1a1a1a;
+    color: #fff;
+    overflow-x: hidden;
+}
+
+.header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(26, 26, 26, 0.9);
+    padding: 1vw 5vw;
+    z-index: 1000;
+}
+
+.nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 2vw;
+    font-weight: bold;
+    color: #f1c40f;
+}
+
+.burger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.burger span {
+    width: 2vw;
+    height: 0.3vw;
+    background: #f1c40f;
+    margin: 0.2vw 0;
+    transition: all 0.3s ease;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+}
+
+.nav-links li {
+    margin-left: 2vw;
+    opacity: 0;
+    transform: translateY(-2vw);
+    animation: slideIn 0.5s forwards;
+    animation-delay: calc(0.1s * var(--i));
+}
+
+.nav-links li:nth-child(1) { --i: 1; }
+.nav-links li:nth-child(2) { --i: 2; }
+.nav-links li:nth-child(3) { --i: 3; }
+.nav-links li:nth-child(4) { --i: 4; }
+
+@keyframes slideIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.nav-links a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.2vw;
+    position: relative;
+    transition: transform 0.3s ease;
+}
+
+.nav-links a:hover {
+    transform: scale(1.1);
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0.2vw;
+    background: #f1c40f;
+    bottom: -0.5vw;
+    left: 0;
+    transition: width 0.3s ease;
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+.hero, .services, .about, .contact {
+    position: relative;
+    padding: 5vw;
+    text-align: center;
+    background-size: cover;
+    background-position: center;
+}
+
+.hero {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('../pics/hero-bg.jpg');
+}
+
+.services {
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('../pics/services-bg.jpg');
+}
+
+.about {
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('../pics/about-bg.jpg');
+}
+
+.contact {
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('../pics/contact-bg.jpg');
+}
+
+.hero::before, .services::before, .about::before, .contact::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(5px);
+    z-index: -1;
+}
+
+.hero h1 {
+    font-size: 4vw;
+    margin-bottom: 2vw;
+    color: #f1c40f;
+}
+
+.hero p {
+    font-size: 1.5vw;
+    margin-bottom: 3vw;
+}
+
+.btn {
+    padding: 1vw 2vw;
+    background: #8e44ad;
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.2vw;
+    border-radius: 0.5vw;
+    transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.btn:hover {
+    transform: scale(1.1);
+    background: #f1c40f;
+    color: #1a1a1a;
+}
+
+.services h2, .about h2, .contact h2 {
+    font-size: 3vw;
+    margin-bottom: 2vw;
+    color: #f1c40f;
+}
+
+.service-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(20vw, 1fr));
+    gap: 2vw;
+    margin-bottom: 3vw;
+}
+
+.service-card {
+    background: #2c2c2c;
+    padding: 2vw;
+    border-radius: 1vw;
+    transition: transform 0.3s ease;
+}
+
+.service-card:hover {
+    transform: translateY(-1vw);
+}
+
+.service-card h3 {
+    font-size: 1.8vw;
+    margin-bottom: 1vw;
+    color: #8e44ad;
+}
+
+.service-card p {
+    font-size: 1vw;
+}
+
+.price {
+    font-size: 1.2vw;
+    color: #f1c40f;
+    margin-top: 1vw;
+}
+
+.gallery h3 {
+    font-size: 2vw;
+    margin-bottom: 2vw;
+    color: #8e44ad;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(15vw, 1fr));
+    gap: 1vw;
+}
+
+.gallery-grid img {
+    width: 100%;
+    border-radius: 0.5vw;
+    transition: transform 0.3s ease;
+}
+
+.gallery-grid img:hover {
+    transform: scale(1.05);
+}
+
+.reviews h3 {
+    font-size: 2vw;
+    margin-bottom: 2vw;
+    color: #8e44ad;
+}
