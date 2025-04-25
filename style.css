@@ -5,6 +5,13 @@
     font-family: 'Montserrat', sans-serif;
 }
 
+@font-face {
+    font-family: 'Planet Kosmos';
+    src: url('fonts/PlanetKosmos.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
 body {
     background: #1a1a1a;
     color: #fff;
@@ -16,26 +23,23 @@ body {
     top: 0;
     width: 100%;
     background: rgba(26, 26, 26, 0.9);
-    padding: 1vw 5vw;
     z-index: 1000;
+    transition: background 0.5s ease;
 }
 
 .nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    padding: 1vw 0;
 }
 
 .logo {
-    font-size: 2vw;
-    font-weight: bold;
+    font-family: 'Planet Kosmos', sans-serif;
+    font-size: 2.5vw;
     color: #f1c40f;
+    transition: color 0.5s ease;
 }
 
-.burger {
-    display: none;
-    flex-direction: column;
-    cursor: pointer;
+.logo:hover {
+    color: #8e44ad;
 }
 
 .burger span {
@@ -43,16 +47,23 @@ body {
     height: 0.3vw;
     background: #f1c40f;
     margin: 0.2vw 0;
-    transition: all 0.3s ease;
+    transition: all 0.5s ease;
+}
+
+.navbar-toggler {
+    border: none;
+}
+
+.navbar-toggler:focus {
+    box-shadow: none;
 }
 
 .nav-links {
     display: flex;
-    list-style: none;
+    align-items: center;
 }
 
 .nav-links li {
-    margin-left: 2vw;
     opacity: 0;
     transform: translateY(-2vw);
     animation: slideIn 0.5s forwards;
@@ -71,92 +82,95 @@ body {
     }
 }
 
-.nav-links a {
+.nav-link {
     color: #fff;
-    text-decoration: none;
     font-size: 1.2vw;
     position: relative;
-    transition: transform 0.3s ease;
+    transition: transform 0.5s ease, color 0.5s ease;
+    padding: 0.5vw 1vw;
 }
 
-.nav-links a:hover {
-    transform: scale(1.1);
+.nav-link:hover {
+    color: #f1c40f;
 }
 
-.nav-links a::after {
+.nav-link::after {
     content: '';
     position: absolute;
     width: 0;
     height: 0.2vw;
     background: #f1c40f;
-    bottom: -0.5vw;
+    bottom: 0;
     left: 0;
-    transition: width 0.3s ease;
+    transition: width 0.5s ease;
 }
 
-.nav-links a:hover::after {
+.nav-link:hover::after {
     width: 100%;
 }
 
-.hero, .services, .about, .contact {
+.hero, .services, .about, .contact, .advantages, .mini-gallery {
     position: relative;
-    padding: 5vw;
-    text-align: center;
+    padding: 5vw 0;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
     background-size: cover;
     background-position: center;
+    transition: background 1s ease;
 }
 
 .hero {
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('../pics/hero-bg.jpg');
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('pics/hero-bg.jpg');
 }
 
 .services {
-    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('../pics/services-bg.jpg');
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('pics/services-bg.jpg');
 }
 
-.about {
-    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('../pics/about-bg.jpg');
+.about, .contact {
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('pics/about-bg.jpg');
+    position: relative;
 }
 
-.contact {
-    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('../pics/contact-bg.jpg');
-}
-
-.hero::before, .services::before, .about::before, .contact::before {
+.about::before, .contact::before {
     content: '';
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    backdrop-filter: blur(5px);
+    background: rgba(26, 26, 26, 0.5);
+    backdrop-filter: blur(8px);
     z-index: -1;
+    transition: opacity 1s ease;
+}
+
+.advantages, .mini-gallery {
+    background: #1a1a1a;
 }
 
 .hero h1 {
     font-size: 4vw;
     margin-bottom: 2vw;
     color: #f1c40f;
+    transition: opacity 1s ease, transform 1s ease;
 }
 
 .hero p {
     font-size: 1.5vw;
     margin-bottom: 3vw;
+    transition: opacity 1s ease, transform 1s ease;
 }
 
 .btn {
     padding: 1vw 2vw;
     background: #8e44ad;
     color: #fff;
-    text-decoration: none;
     font-size: 1.2vw;
     border-radius: 0.5vw;
-    transition: transform 0.3s ease, background 0.3s ease;
+    text-decoration: none;
+    transition: transform 0.5s ease, background 0.5s ease, color 0.5s ease;
 }
 
 .btn:hover {
@@ -165,16 +179,14 @@ body {
     color: #1a1a1a;
 }
 
-.services h2, .about h2, .contact h2 {
+.services h2, .about h2, .contact h2, .advantages h2, .mini-gallery h2 {
     font-size: 3vw;
     margin-bottom: 2vw;
     color: #f1c40f;
+    transition: opacity 1s ease, transform 1s ease;
 }
 
 .service-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(20vw, 1fr));
-    gap: 2vw;
     margin-bottom: 3vw;
 }
 
@@ -182,53 +194,302 @@ body {
     background: #2c2c2c;
     padding: 2vw;
     border-radius: 1vw;
-    transition: transform 0.3s ease;
+    transition: transform 0.5s ease, box-shadow 0.5s ease;
 }
 
 .service-card:hover {
     transform: translateY(-1vw);
+    box-shadow: 0 0.5vw 1vw rgba(241, 196, 15, 0.3);
 }
 
 .service-card h3 {
     font-size: 1.8vw;
     margin-bottom: 1vw;
     color: #8e44ad;
+    transition: color 0.5s ease;
 }
 
 .service-card p {
     font-size: 1vw;
+    transition: opacity 0.5s ease;
 }
 
 .price {
     font-size: 1.2vw;
     color: #f1c40f;
     margin-top: 1vw;
+transition: color 0.5s ease;
+}
+
+.advantage-card {
+    background: #2c2c2c;
+    padding: 2vw;
+    border-radius: 1vw;
+    transition: transform 0.5s ease, box-shadow 0.5s ease;
+}
+
+.advantage-card:hover {
+    transform: translateY(-1vw);
+    box-shadow: 0 0.5vw 1vw rgba(241, 196, 15, 0.3);
+}
+
+.advantage-card h3 {
+    font-size: 1.8vw;
+    margin-bottom: 1vw;
+    color: #8e44ad;
+}
+
+.advantage-card p {
+    font-size: 1vw;
 }
 
 .gallery h3 {
     font-size: 2vw;
     margin-bottom: 2vw;
     color: #8e44ad;
+    transition: opacity 1s ease;
 }
 
-.gallery-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(15vw, 1fr));
-    gap: 1vw;
-}
-
-.gallery-grid img {
-    width: 100%;
+.carousel-inner img {
     border-radius: 0.5vw;
-    transition: transform 0.3s ease;
+    transition: opacity 1s ease;
 }
 
-.gallery-grid img:hover {
-    transform: scale(1.05);
+.carousel-control-prev, .carousel-control-next {
+    background: rgba(0, 0, 0, 0.5);
+    width: 5%;
+    transition: background 0.5s ease;
 }
 
-.reviews h3 {
+.carousel-control-prev:hover, .carousel-control-next:hover {
+    background: rgba(241, 196, 15, 0.7);
+}
+
+.team h3, .reviews h3, .schedule h3, .faq h3 {
     font-size: 2vw;
     margin-bottom: 2vw;
     color: #8e44ad;
+    transition: opacity 1s ease;
+}
+
+.team-card {
+    background: #2c2c2c;
+    padding: 2vw;
+    border-radius: 1vw;
+    transition: transform 0.5s ease, box-shadow 0.5s ease;
+}
+
+.team-card:hover {
+    transform: translateY(-1vw);
+    box-shadow: 0 0.5vw 1vw rgba(142, 68, 173, 0.3);
+}
+
+.team-card img {
+    max-height: 15vw;
+    object-fit: cover;
+    margin-bottom: 1vw;
+}
+
+.team-card h4 {
+    font-size: 1.5vw;
+    margin-bottom: 1vw;
+    color: #f1c40f;
+}
+
+.team-card p {
+    font-size: 1vw;
+}
+
+.review-card {
+    background: #2c2c2c;
+    padding: 2vw;
+    border-radius: 1vw;
+    margin-bottom: 1vw;
+    transition: transform 0.5s ease, box-shadow 0.5s ease;
+}
+
+.review-card:hover {
+    transform: translateY(-0.5vw);
+    box-shadow: 0 0.5vw 1vw rgba(142, 68, 173, 0.3);
+}
+
+.review-card p {
+    font-size: 1vw;
+    margin-bottom: 1vw;
+    transition: opacity 0.5s ease;
+}
+
+.review-card span {
+    font-size: 0.9vw;
+    color: #f1c40f;
+    transition: color 0.5s ease;
+}
+
+.contact-form {
+    background: linear-gradient(135deg, #2c2c2c, #1a1a1a);
+    padding: 3vw;
+    border-radius: 1vw;
+    box-shadow: 0 0.5vw 1vw rgba(0, 0, 0, 0.5);
+    max-width: 30vw;
+    margin: 0 auto 2vw;
+    transition: transform 0.5s ease, box-shadow 0.5s ease;
+}
+
+.contact-form:hover {
+    transform: scale(1.02);
+    box-shadow: 0 0.5vw 1.5vw rgba(241, 196, 15, 0.3);
+}
+
+.form-control {
+    background: #1a1a1a;
+    border: 0.1vw solid #f1c40f;
+    color: #fff;
+    font-size: 1vw;
+    transition: border-color 0.5s ease, box-shadow 0.5s ease, background 0.5s ease;
+}
+
+.form-control:focus {
+    background: #2c2c2c;
+    border-color: #8e44ad;
+    box-shadow: 0 0 0.5vw rgba(142, 68, 173, 0.5);
+}
+
+.form-control::placeholder {
+    color: #888;
+    transition: color 0.5s ease;
+}
+
+.contact-form .btn {
+    width: 100%;
+    border: none;
+}
+
+.contact-info p {
+    font-size: 1vw;
+    margin: 0.5vw 0;
+    transition: opacity 0.5s ease;
+}
+
+.contact-info i {
+    color: #f1c40f;
+    margin-right: 0.5vw;
+}
+
+.schedule p {
+    font-size: 1vw;
+    margin: 0.5vw 0;
+    text-align: center;
+}
+
+.accordion-item {
+    background: #2c2c2c;
+    border: none;
+    margin-bottom: 1vw;
+    transition: transform 0.5s ease;
+}
+
+.accordion-button {
+    background: #2c2c2c;
+    color: #f1c40f;
+    font-size: 1vw;
+    transition: background 0.5s ease, color 0.5s ease;
+}
+
+.accordion-button:not(.collapsed) {
+    background: #8e44ad;
+    color: #fff;
+}
+
+.accordion-button:focus {
+    box-shadow: none;
+}
+
+.accordion-body {
+    font-size: 1vw;
+    color: #fff;
+    transition: opacity 0.5s ease;
+}
+
+.footer {
+    text-align: center;
+    padding: 2vw;
+    background: #0f0f0f;
+    font-size: 1vw;
+    transition: background 0.5s ease;
+}
+
+/* Анимации */
+.fade-in {
+    opacity: 0;
+    transform: translateY(5vw);
+    transition: opacity 1.5s ease-out, transform 1.5s ease-out;
+}
+
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Мобильные стили */
+@media (max-width: 768px) {
+    .logo {
+        font-size: 5vw;
+    }
+
+    .nav-link {
+        font-size: 3vw;
+    }
+
+    .hero h1 {
+        font-size: 8vw;
+    }
+
+    .hero p {
+font-size: 3vw;
+    }
+
+    .btn {
+        font-size: 3vw;
+        padding: 2vw 4vw;
+    }
+
+    .services h2, .about h2, .contact h2, .advantages h2, .mini-gallery h2 {
+        font-size: 6vw;
+    }
+
+    .service-card h3, .advantage-card h3 {
+        font-size: 4vw;
+    }
+
+    .service-card p, .advantage-card p {
+        font-size: 2vw;
+    }
+
+    .price {
+        font-size: 3vw;
+    }
+
+    .gallery h3, .team h3, .reviews h3, .schedule h3, .faq h3 {
+        font-size: 4vw;
+    }
+
+    .team-card h4 {
+        font-size: 3vw;
+    }
+
+    .team-card p, .review-card p, .contact-info p, .schedule p, .accordion-body {
+        font-size: 2vw;
+    }
+
+    .review-card span {
+        font-size: 1.8vw;
+    }
+
+    .contact-form {
+        max-width: 80vw;
+    }
+
+    .form-control, .accordion-button {
+        font-size: 3vw;
+    }
 }
