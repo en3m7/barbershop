@@ -1,3 +1,4 @@
+@import url('https://fonts.cdnfonts.com/css/planet-kosmos');
 * {
     margin: 0;
     padding: 0;
@@ -7,7 +8,7 @@
 
 @font-face {
     font-family: 'Planet Kosmos';
-    src: url('fonts/PlanetKosmos.ttf') format('truetype');
+    src: url('PlanetKosmos.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
@@ -23,7 +24,7 @@ body {
     top: 0;
     width: 100%;
     background: rgba(26, 26, 26, 0.9);
-    z-index: 1000;
+    z-index: 100; /* Понижен z-index, чтобы не перекрывать контент */
     transition: background 0.5s ease;
 }
 
@@ -61,6 +62,7 @@ body {
 .nav-links {
     display: flex;
     align-items: center;
+    justify-content: flex-end; /* Выравнивание кнопок */
 }
 
 .nav-links li {
@@ -86,8 +88,9 @@ body {
     color: #fff;
     font-size: 1.2vw;
     position: relative;
-    transition: transform 0.5s ease, color 0.5s ease;
-    padding: 0.5vw 1vw;
+    transition: color 0.5s ease;
+    padding: 0.5vw 1.5vw;
+    margin: 0;
 }
 
 .nav-link:hover {
@@ -111,8 +114,8 @@ body {
 
 .hero, .services, .about, .contact, .advantages, .mini-gallery {
     position: relative;
-    padding: 5vw 0;
-    min-height: 100vh;
+    padding: 10vw 0 5vw; /* Добавлен padding-top для учета фиксированного header */
+    min-height: 100vh; /* Гарантирует видимость контента */
     display: flex;
     align-items: center;
     background-size: cover;
@@ -142,7 +145,7 @@ body {
     height: 100%;
     background: rgba(26, 26, 26, 0.5);
     backdrop-filter: blur(8px);
-    z-index: -1;
+    z-index: -1; /* Установлен низкий z-index для фона */
     transition: opacity 1s ease;
 }
 
@@ -203,7 +206,8 @@ body {
 }
 
 .service-card h3 {
-    font-size: 1.8vw;
+    font-size: 1.
+8vw;
     margin-bottom: 1vw;
     color: #8e44ad;
     transition: color 0.5s ease;
@@ -218,7 +222,7 @@ body {
     font-size: 1.2vw;
     color: #f1c40f;
     margin-top: 1vw;
-transition: color 0.5s ease;
+    transition: color 0.5s ease;
 }
 
 .advantage-card {
@@ -427,7 +431,15 @@ transition: color 0.5s ease;
 
 .fade-in.visible {
     opacity: 1;
-    transform: translateY(0);
+transform: translateY(0);
+}
+
+/* Резервный стиль, если JS не сработал */
+@media (min-width: 0px) {
+    .fade-in {
+        opacity: 1; /* Контент виден даже без JS */
+        transform: translateY(0);
+    }
 }
 
 /* Мобильные стили */
@@ -436,8 +448,24 @@ transition: color 0.5s ease;
         font-size: 5vw;
     }
 
+    .nav-links {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+    }
+
     .nav-link {
         font-size: 3vw;
+        padding: 2vw 0;
+        margin: 0;
+        width: 100%;
+        text-align: center;
+    }
+
+    .nav-link::after {
+        display: none; /* Убираем подчеркивание на мобильных */
     }
 
     .hero h1 {
@@ -445,7 +473,7 @@ transition: color 0.5s ease;
     }
 
     .hero p {
-font-size: 3vw;
+        font-size: 3vw;
     }
 
     .btn {
